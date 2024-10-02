@@ -1,0 +1,33 @@
+
+<div class="posts">
+    <% user.posts.reverse().forEach(function(post){ %>
+        <div class="post">
+            <a href="/profile/<%= user.username %>" class="name_area">
+            <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg" alt="">
+            <p class="post_name"><%= user.name%></p>
+
+            </a>
+            <div class="postdiv">
+              <p><%= post.content%></p>
+            </div>
+            <div class="footer">
+             <div class="wrap">
+              <a href="/like/<%= post._id%>">
+                <i class='bx bx-heart' ></i>
+              </a>
+              <p class="like"><%= post.likes.length %> likes</p>
+             </div>
+           <% if(edit){%>
+            <div class="wrap">
+              <span style="cursor: pointer;" >
+                <i id="edit" data-id="<%= post._id %>" class='bx bx-message-square-edit'></i>
+              </span>
+                <a id="delete" href="/delete/<%= post._id %>">
+                  <i class='bx bx-message-square-x'></i>        </a>
+             </div>
+            <% }%>
+            </div>
+          </div>
+       <%})%>
+ 
+</div>

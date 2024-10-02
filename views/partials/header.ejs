@@ -1,0 +1,21 @@
+<header>
+  <a style="background-color: transparent;" href="/feed">
+    <i class='bx bx-arrow-back' style='color:#ffffff' ></i>
+  </a>
+ <div class="tools">
+  <% if(isLogged){%>
+    <a class="logout" href="/logout">
+        Logout
+        <i class='bx bx-log-out-circle'></i>
+    </a>
+    <a class="pro_header" href="/profile/<%= currentUser.username %>">
+      <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg" alt="">
+    </a>
+    <% }else{%>
+    <a class="login" href="/logout">
+      Login
+      <i class='bx bx-user' style='color:#ffffff' ></i>
+  </a>
+  <% }%>
+ </div>
+</header>

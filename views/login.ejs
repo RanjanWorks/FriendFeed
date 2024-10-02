@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/login.css">
+  </head>
+  <body>
+    <main>
+      <section class="titles">
+        <div class="content">
+          <h1>Friend Feed</h1>
+          <p>Sign in or create account</p>
+        </div>
+      </section>
+      <section>
+        <div class="page">
+          <h1>Log in</h1>
+          <div class="newuser">New user <a href="/">Create an account</a></div>
+          <form  class="loginForm" action="/login" method="post">
+            <div class="warapper">
+              <i class="bx bx-envelope"></i>
+              <input type="email" name="email" placeholder="Enter Email"/>
+            </div>
+            <div class="warapper">
+                <i class='bx bx-lock-alt'></i>
+              <input  type="password" name="password" placeholder="Password"/>
+            </div>
+            <div class="warapper">
+              <button> 
+                  Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

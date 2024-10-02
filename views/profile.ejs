@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= user.username%></title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+
+  </head>
+  <body>
+    <main>
+<!-- <header>
+ <div class="tools">
+  <% if(isLogged){%>
+    <a class="logout" href="/logout">
+        Logout
+        <i class='bx bx-log-out-circle'></i>
+    </a>
+    <% }else{%>
+    <a class="login" href="/logout">
+      Login
+      <i class='bx bx-user' style='color:#ffffff' ></i>
+  </a>
+  <% }%>
+ </div>
+</header> -->
+<%- include('partials/header.ejs')%>
+<div class="profile">
+  <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg" alt="">
+  <div class="content">
+    <!-- <p class="status">Online</p> -->
+    <p class="name"><%= user.name %></p>
+    <p class="username"><%= user.username %></p>
+    <p class="about"><%= user.about%></p>
+<div class="buttons">
+  <% if(edit){%>
+    <a onclick="openModal()" >New Post <i class='bx bx-message-square-add'></i></a>
+    <a href="/profile/edit/<%= user.username %>">Edit <i class='bx bx-pencil'></i></a>
+    <% }%>
+    <a >Share Profile  <i class='bx bx-share-alt'></i></a>
+
+
+</div>
+</div>
+</div>
+<%- include('partials/posts.ejs')%>
+
+<!-- <div class="posts">
+    <% user.posts.reverse().forEach(function(post){ %>
+        <div class="post">
+            <p class="post_name"><%= user.name%></p>
+            <div class="postdiv">
+              <p><%= post.content%></p>
+            </div>
+            <div class="footer">
+             <div class="wrap">
+              <a href="/like/<%= post._id%>">
+                <i class='bx bx-heart' ></i>
+              </a>
+              <p class="like"><%= post.likes.length %> likes</p>
+             </div>
+           <% if(edit){%>
+            <div class="wrap">
+              <span style="cursor: pointer;" >
+                <i id="edit" data-id="<%= post._id %>" class='bx bx-message-square-edit'></i>
+              </span>
+                <a id="delete" href="/delete/<%= post._id %>">
+                  <i class='bx bx-message-square-x'></i>        </a>
+             </div>
+            <% }%>
+            </div>
+          </div>
+       <%})%>
+ 
+</div> -->
+<dialog>
+  <form action="/post" method="post" class="newpostdiv">
+    <div class="headerdiv">
+    <h2>New Post</h2>
+    <i onclick="closeModal()" class='bx bx-message-square-x'></i>
+    </div>
+    <textarea placeholder="Write what's on you mind" name="content" id="content"></textarea>
+    <div class="footer">
+      <button  id="submitBtn" type="submit">Create <i class='bx bx-message-square-add'></i></button>
+
+    </div> 
+  </form>
+</dialog>
+<script>
+  let dialog = document.querySelector('dialog')
+  let submitBtn = document.querySelector('#submitBtn')
+  let form = document.querySelector('.newpostdiv')
+  let posts = document.querySelectorAll('#edit')
+  let content = document.getElementById('content')
+  let deletePosts = document.querySelectorAll('#delete')
+ 
+
+posts.forEach(post=>{
+    post.addEventListener('click',(e)=>{
+    let postContent = e.target.parentElement.parentElement.parentElement.parentElement
+    let postText = postContent.querySelector('.postdiv').innerText
+    console.log(postContent)
+   let id = e.target.dataset.id
+   form.action = `/update/${id}`
+   let h2 = form.querySelector('h2')
+   h2.textContent = "Edit Post"
+   submitBtn.textContent = "Update"
+   content.value = postText
+   openModal()
+   
+  })
+})
+deletePosts.forEach(post=>{
+    post.addEventListener('click',(e)=>{
+    let isConfirmed = confirm("Do you want to delete this post ?")
+    if(!isConfirmed){
+        e.preventDefault()
+    }
+})
+})
+
+
+  form.addEventListener('submit',(e)=>{
+  submitBtn.textContent = "Creating..."
+  })
+
+  function openModal(){
+  dialog.showModal()
+
+ }
+  function closeModal(){
+  dialog.close()
+  form.action = `/post`
+   let h2 = form.querySelector('h2')
+   h2.textContent = "New Post"
+   content.value = ""
+   submitBtn.textContent = "Create"
+
+
+  }
+</script>
+  </body>
+</html>
+ 

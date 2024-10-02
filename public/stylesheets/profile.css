@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Assistant", sans-serif;
+  /* font-optical-sizing: auto; */
+  /* font-style: normal; */
+}
+body {
+  min-height: 100vh;
+  background-color: var(--bgClr);
+}
+
+:root {
+  color-scheme: light dark;
+  --bgClr: light-dark(white,#27282A) ;
+  --primaryClr: light-dark(#F6F8FC,#303030);
+  --primaryClr2: light-dark(#D3E3FD,#1F1F1F);
+  --textClrPrimary: light-dark(black,#ededff);
+  --accent:light-dark(#0B57D0,#0842A0);
+}
+
+header {
+  width: 95%;
+  height: 50px;
+  /* margin: 5px auto; */
+  border-radius: 25px;
+  border: 1px solid #444746;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* background: linear-gradient(var(--gradient1), var(--gradient2)); */
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  justify-content: space-between;
+ .tools{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+ }
+  a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 7px 20px;
+    background-color: var(--primaryClr);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+.pro_header{
+  background-color: transparent;
+  padding: 0;
+  img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  
+  }
+}
+  .logout{
+    color: orangered;
+  }
+  .login{
+    color: var(--textClrPrimary);
+    vertical-align: middle;
+  }
+ 
+}
+.profile {
+  padding: 20px;
+  background-color: var(--primaryClr2);
+  width: 95%;
+  margin: 20px auto;
+  border-radius: 10px;
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid var(--primaryClr);
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+  .content::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .buttons{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .name {
+    color: var(--textClrPrimary);
+    font-size: 30px;
+  }
+  .username {
+    color: var(--textClrPrimary);
+    font-size: 14px;
+  }
+  .about {
+    color: var(--textClrPrimary);
+  }
+  .status {
+    color: #00fd00;
+  }
+  a {
+    padding: 10px 20px;
+    border: none;
+    display: inline-block;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    /* background: linear-gradient(45deg,var(--gradient1), var(--gradient2)); */
+    background-color: var(--primaryClr);
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--textClrPrimary);
+  }
+}
+
+
+.posts {
+  display: grid;
+  width: 95%;
+  margin: 20px auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  .post {
+    background-color: var(--primaryClr2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    .post_name {
+      color: var(--textClrPrimary);
+      font-weight: bold;
+    }
+    .name_area{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: var(--textClrPrimary);
+      font-weight: bold;
+      img{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    .postdiv {
+      padding: 15px 0;
+      color: var(--textClrPrimary);
+    }
+    .footer {
+      display: flex;
+      padding-top: 10px;
+      padding-bottom: 3px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--primaryClr);
+      gap: 10px;
+      .wrap {
+        display: flex;
+        gap: 5px;
+        color: var(--textClrPrimary);
+        align-items: center;
+        i {
+          vertical-align: middle;
+          color: var(--textClrPrimary);
+          font-size: 19px;
+        }
+      }
+    }
+  }
+}
+ 
+dialog{
+
+   border: 1px solid #5e5e5e;
+   border-radius: 10px;
+   outline: none;
+   width: 90%;
+   max-width: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    background-color: var(--bgClr);
+    form{
+        display: flex;
+        color: #ccc;
+        gap: 15px;
+        flex-direction: column;
+        padding: 15px;
+        textarea{
+            width: 100%;
+            height:150px;
+            border: none;
+            outline: none;
+            background-color: var(--primaryClr);
+            color: white;
+            padding: 10px;
+            font-size: 17px;
+            resize: none;
+            border-radius: 10px;
+        }
+        .headerdiv{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            i{
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+        button{
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: var(--accent);
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            border: none;
+        }
+    }
+
+
+}
+
+dialog::backdrop{
+    backdrop-filter: blur(5px);
+}
+
+.form_filed{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    input ,textarea{
+        padding: 12px;
+        outline: none;
+        border: 2px solid var(--primaryClr);
+        background-color: transparent;
+        color: white;
+        resize: none;
+        border-radius: 4px;
+
+    }
+    input[type="submit"]{
+      background-color: var(--accent);
+      color: var(--textClrPrimary);
+    }
+}
